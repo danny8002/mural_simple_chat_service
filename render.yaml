@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: mural-simple-chat-service
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APIKEY
+        generateValue: true
+      - key: SESSION_SIGNING_SECRET
+        generateValue: true
+      - key: AZURE_LIVE_ENDPOINT
+        sync: false
+      - key: AZURE_LIVE_API_KEY
+        sync: false
+      - key: AZURE_LIVE_DEPLOYMENT
+        sync: false
+      - key: AZURE_RESPONSES_ENDPOINT
+        sync: false
+      - key: AZURE_RESPONSES_API_KEY
+        sync: false
+      - key: AZURE_RESPONSES_DEPLOYMENT
+        sync: false
+      - key: ENABLE_WEB_SEARCH
+        value: "false"
